@@ -1,0 +1,16 @@
+name: C++ CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install g++
+      run: choco install mingw -y
+    - name: Build
+      run: g++ -o output main.cpp
+    - name: Run
+      run: .\output
